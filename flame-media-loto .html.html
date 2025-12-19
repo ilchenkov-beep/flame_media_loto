@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Новорічне Лото — Flame Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --snow-white: #ffffff;
+            --cream: #fef9e7;
+            --flame-orange: #ff6b35;
+            --flame-red: #e63946;
+            --flame-yellow: #ffd23f;
+            --pine-green: #2d6a4f;
+            --deep-green: #1b4332;
+            --gold: #fbbf24;
+            --warm-gold: #f59e0b;
+            --soft-red: #fee2e2;
+            --text-dark: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 30%, #fde68a 60%, #fcd34d 100%);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Decorative background elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            left: -20%;
+            width: 70%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(45, 106, 79, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Snowflakes */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            animation: fall linear infinite;
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.3), 0 0 5px rgba(255,255,255,0.8);
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--flame-orange), var(--flame-red));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .brand .flame-icon {
+            font-size: 1.2rem;
+        }
+
+        .header h1 {
+            font-family: 'Comfortaa', cursive;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--flame-red), var(--flame-orange), var(--warm-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--pine-green);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header .event-info {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        .tree-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.1), 0 4px 15px rgba(0,0,0,0.05);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card h2 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--flame-orange);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Already registered state */
+        .already-registered {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .already-registered .message {
+            font-size: 1.1rem;
+            color: var(--pine-green);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .your-ticket {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 2px solid var(--flame-orange);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 1rem;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
+        }
+
+        .your-ticket-label {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .your-ticket-number {
+            font-family: 'Comfortaa', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--flame-red), var(--flame-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .your-ticket-name {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .your-gift {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .your-gift-label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .your-gift-name {
+            font-size: 1.2rem;
+            color: var(--pine-green);
+            font-weight: 500;
+        }
+
+        .choice-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pine-green), var(--deep-green));
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Form */
+        .registration-form {
+            display: block;
+        }
+
+        .registration-form.hidden {
+            display: none;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--flame-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
+        }
+
+        input[type="text"]::placeholder {
+            color: #9ca3af;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-family: 'Comfortaa', cursive;
+            font-weight: 600;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--flame-orange), var(--flame-red));
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            color: white;
+            box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(107, 114, 128, 0.4);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Result display */
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .result-container.show {
+            display: block;
+        }
+
+        .result-congrats {
+            font-size: 1.3rem;
+            color: var(--pine-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .lucky-number {
+            font-family: 'Comfortaa', cursive;
+            font-size: 6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--flame-red), var(--flame-orange), var(--flame-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.4));
+            }
+            to {
+                filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.7));
+            }
+        }
+
+        .result-label {
+            font-size: 1rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-name {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
+
+        .result-gift {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-radius: 16px;
+            border: 1px solid rgba(45, 106, 79, 0.2);
+        }
+
+        .result-gift-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-gift-name {
+            font-size: 1.3rem;
+            color: var(--pine-green);
+            font-weight: 600;
+        }
+
+        /* Participants list */
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .participant-card {
+            background: linear-gradient(135deg, #fafafa, #f5f5f5);
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out backwards;
+        }
+
+        .participant-card:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .participant-card.is-you {
+            border-color: var(--flame-orange);
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+        }
+
+        .participant-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--flame-orange), var(--flame-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comfortaa', cursive;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .participant-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .participant-name {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .participant-gift {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #9ca3af;
+        }
+
+        .empty-state .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--flame-orange), var(--flame-red), var(--flame-yellow));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Error message */
+        .error-message {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #dc2626;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Slots full message */
+        .slots-full {
+            text-align: center;
+            padding: 2rem;
+            color: var(--pine-green);
+        }
+
+        .slots-full .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        .footer .brand-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--flame-orange);
+            font-weight: 600;
+        }
+
+        /* Admin toggle */
+        .admin-toggle {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            z-index: 100;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .lucky-number {
+                font-size: 4.5rem;
+            }
+            
+            .your-ticket-number {
+                font-size: 3.5rem;
+            }
+            
+            .participants-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Confetti container */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Decorative ornaments */
+        .ornament {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .ornament-1 { top: 10%; left: 5%; }
+        .ornament-2 { top: 30%; right: 8%; }
+        .ornament-3 { top: 60%; left: 3%; }
+        .ornament-4 { top: 80%; right: 5%; }
+        .ornament-5 { top: 15%; right: 15%; }
+    </style>
+</head>
+<body>
+    <!-- Decorative ornaments -->
+    <div class="ornament ornament-1">🎄</div>
+    <div class="ornament ornament-2">⭐</div>
+    <div class="ornament ornament-3">🎁</div>
+    <div class="ornament ornament-4">❄️</div>
+    <div class="ornament ornament-5">🔔</div>
+
+    <!-- Snowflakes background -->
+    <div class="snowflakes" id="snowflakes"></div>
+    
+    <!-- Confetti container -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <span class="flame-icon">🔥</span>
+                Flame Media
+            </div>
+            <span class="tree-emoji">🎄</span>
+            <h1>Новорічне Лото</h1>
+            <p class="subtitle">Розіграш подарунків 2025</p>
+            <p class="event-info">Контент-завод вітає своїх блогерів!</p>
+        </header>
+
+        <!-- Registration card -->
+        <div class="card">
+            <h2>🎁 Отримати свій номер</h2>
+            
+            <!-- Already registered view -->
+            <div class="already-registered" id="alreadyRegistered" style="display: none;">
+                <p class="message">✅ Ви вже зареєстровані!</p>
+                <div class="your-ticket">
+                    <div class="your-ticket-label">Ваш щасливий номер</div>
+                    <div class="your-ticket-number" id="yourNumber"></div>
+                    <div class="your-ticket-name" id="yourName"></div>
+                    <div class="your-gift">
+                        <div class="your-gift-label">Ваш подарунок</div>
+                        <div class="your-gift-name" id="yourGift"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slots full view -->
+            <div class="slots-full" id="slotsFull" style="display: none;">
+                <div class="icon">🎊</div>
+                <p>Всі 35 місць зайняті!<br>Розіграш завершено.</p>
+            </div>
+            
+            <!-- Registration form -->
+            <div class="registration-form" id="registrationForm">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="nameInput" placeholder="Введіть ваше ім'я..." maxlength="50" autocomplete="off">
+                    </div>
+                    <button class="btn btn-primary" onclick="registerParticipant()" id="registerBtn">
+                        <span>🔥</span> Отримати номер
+                    </button>
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+            
+            <!-- Result -->
+            <div class="result-container" id="resultContainer">
+                <p class="result-congrats">🎉 Вітаємо!</p>
+                <p class="result-label">Ваш щасливий номер</p>
+                <div class="lucky-number" id="luckyNumber"></div>
+                <p class="result-name"><span id="resultName"></span></p>
+                <div class="result-gift">
+                    <div class="result-gift-label">🎁 Ваш подарунок</div>
+                    <div class="result-gift-name" id="resultGift"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Participants list -->
+        <div class="card">
+            <h2>👥 Учасники Flame Media</h2>
+            
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text"><span id="totalParticipants">0</span> з 35 блогерів</div>
+            </div>
+            
+            <div id="participantsList">
+                <div class="empty-state">
+                    <div class="icon">🎬</div>
+                    <p>Поки немає учасників.<br>Будьте першим блогером!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin section (hidden by default) -->
+        <div class="card admin-panel" id="adminPanel">
+            <h2>⚙️ Адмін-панель</h2>
+            <button class="btn btn-secondary" onclick="resetLottery()">
+                <span>🔄</span> Скинути все
+            </button>
+        </div>
+
+        <footer class="footer">
+            🎄 Щасливого Нового Року від <span class="brand-footer">🔥 Flame Media</span>! 🎄
+        </footer>
+    </div>
+
+    <!-- Admin toggle button -->
+    <div class="admin-toggle">
+        <button class="btn btn-small" onclick="toggleAdmin()" style="opacity: 0.3; background: rgba(0,0,0,0.2); color: #666;">⚙️</button>
+    </div>
+
+    <script>
+        // ============================================
+        // НАЛАШТУВАННЯ ПОДАРУНКІВ
+        // Відредагуйте цей список під ваші подарунки!
+        // Формат: номер: "Назва подарунка"
+        // Для подарунків на вибір використовуйте " або "
+        // ============================================
+        const GIFTS = {
+            1: "Подарунок #1",
+            2: "Подарунок #2",
+            3: "Подарунок #3",
+            4: "Подарунок #4",
+            5: "Подарунок #5",
+            6: "Подарунок #6",
+            7: "Подарунок #7",
+            8: "Подарунок #8",
+            9: "Подарунок #9",
+            10: "Подарунок #10",
+            11: "Подарунок #11",
+            12: "Подарунок #12",
+            13: "Подарунок #13",
+            14: "Подарунок #14",
+            15: "Подарунок #15",
+            16: "Подарунок #16",
+            17: "Подарунок #17",
+            18: "Подарунок #18",
+            19: "Подарунок #19",
+            20: "Подарунок #20",
+            21: "Подарунок #21",
+            22: "Подарунок #22",
+            23: "Подарунок #23",
+            24: "Подарунок #24",
+            25: "Подарунок #25",
+            26: "Подарунок #26",
+            27: "Подарунок #27",
+            28: "Подарунок #28",
+            29: "Подарунок #29",
+            30: "Подарунок #30",
+            31: "Подарунок #31",
+            32: "Подарунок #32",
+            33: "Подарунок #33",
+            34: "Подарунок #34",
+            35: "Подарунок #35"
+        };
+
+        const TOTAL_SLOTS = 35;
+        
+        // UNIQUE STORAGE KEY - change this to reset all data
+        const STORAGE_KEY = 'flameLotto2025_v2';
+        const USER_KEY = 'flameLottoUser2025_v2';
+
+        // Initialize data from localStorage
+        let participants = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        let currentUser = JSON.parse(localStorage.getItem(USER_KEY)) || null;
+
+        // Get available numbers
+        function getAvailableNumbers() {
+            const usedNumbers = new Set(participants.map(p => p.number));
+            const available = [];
+            for (let i = 1; i <= TOTAL_SLOTS; i++) {
+                if (!usedNumbers.has(i)) {
+                    available.push(i);
+                }
+            }
+            return available;
+        }
+
+        // Check if gift is a choice
+        function isChoiceGift(giftText) {
+            return giftText.includes(' або ');
+        }
+
+        // Create snowflakes
+        function createSnowflakes() {
+            const container = document.getElementById('snowflakes');
+            const snowflakeChars = ['❄', '❅', '❆', '✻', '✼', '❉'];
+            
+            for (let i = 0; i < 40; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                snowflake.style.animationDelay = (Math.random() * 10) + 's';
+                snowflake.style.fontSize = (Math.random() * 12 + 8) + 'px';
+                snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+                container.appendChild(snowflake);
+            }
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const container = document.getElementById('confetti');
+            container.innerHTML = '';
+            const colors = ['#ff6b35', '#e63946', '#ffd23f', '#2d6a4f', '#fbbf24', '#ffffff'];
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = (Math.random() * 0.8) + 's';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                }
+                
+                container.appendChild(confetti);
+            }
+            
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 4000);
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+            setTimeout(() => errorEl.classList.remove('show'), 3000);
+        }
+
+        // Format gift display with choice badge
+        function formatGiftDisplay(giftText) {
+            if (isChoiceGift(giftText)) {
+                return giftText + ' <span class="choice-badge">на вибір</span>';
+            }
+            return giftText;
+        }
+
+        // Check registration state and update UI
+        function checkRegistrationState() {
+            const available = getAvailableNumbers();
+            
+            // If user already registered
+            if (currentUser) {
+                document.getElementById('registrationForm').style.display = 'none';
+                document.getElementById('alreadyRegistered').style.display = 'block';
+                document.getElementById('yourNumber').textContent = currentUser.number;
+                document.getElementById('yourName').textContent = currentUser.name;
+                document.getElementById('yourGift').innerHTML = formatGiftDisplay(GIFTS[currentUser.number]);
+                return;
+            }
+            
+            // If all slots are full
+            if (available.length === 0) {
+                document.getElementById('registrationForm').style.display = 'none';
+                document.getElementById('slotsFull').style.display = 'block';
+                return;
+            }
+            
+            // Show registration form
+            document.getElementById('registrationForm').style.display = 'block';
+        }
+
+        // Register participant
+        function registerParticipant() {
+            const nameInput = document.getElementById('nameInput');
+            const name = nameInput.value.trim();
+            
+            if (!name) {
+                showError('Будь ласка, введіть ваше ім\'я');
+                nameInput.focus();
+                return;
+            }
+            
+            // Check if name already exists
+            if (participants.some(p => p.name.toLowerCase() === name.toLowerCase())) {
+                showError('Блогер з таким ім\'ям вже зареєстрований!');
+                return;
+            }
+            
+            // Get available numbers
+            const available = getAvailableNumbers();
+            if (available.length === 0) {
+                showError('Всі місця вже зайняті!');
+                checkRegistrationState();
+                return;
+            }
+            
+            // Pick random number from available
+            const randomIndex = Math.floor(Math.random() * available.length);
+            const number = available[randomIndex];
+            
+            // Create participant
+            const participant = {
+                name: name,
+                number: number,
+                timestamp: Date.now()
+            };
+            
+            participants.push(participant);
+            currentUser = participant;
+            
+            // Save to localStorage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(participants));
+            localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
+            
+            // Hide form, show result
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('luckyNumber').textContent = number;
+            document.getElementById('resultName').textContent = name;
+            document.getElementById('resultGift').innerHTML = formatGiftDisplay(GIFTS[number]);
+            document.getElementById('resultContainer').classList.add('show');
+            
+            // Create confetti
+            createConfetti();
+            
+            // Clear input
+            nameInput.value = '';
+            
+            // Update list
+            renderParticipants();
+        }
+
+        // Render participants list
+        function renderParticipants() {
+            const container = document.getElementById('participantsList');
+            const totalEl = document.getElementById('totalParticipants');
+            const progressEl = document.getElementById('progressFill');
+            
+            totalEl.textContent = participants.length;
+            progressEl.style.width = (participants.length / TOTAL_SLOTS * 100) + '%';
+            
+            if (participants.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="icon">🎬</div>
+                        <p>Поки немає учасників.<br>Будьте першим блогером!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Sort by number
+            const sorted = [...participants].sort((a, b) => a.number - b.number);
+            
+            container.innerHTML = `
+                <div class="participants-grid">
+                    ${sorted.map((p, i) => `
+                        <div class="participant-card ${currentUser && currentUser.name === p.name ? 'is-you' : ''}" style="animation-delay: ${i * 0.03}s">
+                            <div class="participant-number">${p.number}</div>
+                            <div class="participant-info">
+                                <div class="participant-name">${escapeHtml(p.name)}${currentUser && currentUser.name === p.name ? ' (ви)' : ''}</div>
+                                <div class="participant-gift">${GIFTS[p.number].length > 25 ? GIFTS[p.number].substring(0, 25) + '...' : GIFTS[p.number]}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Toggle admin panel
+        function toggleAdmin() {
+            const panel = document.getElementById('adminPanel');
+            panel.classList.toggle('show');
+        }
+
+        // Reset lottery (admin only)
+        function resetLottery() {
+            if (confirm('Ви впевнені, що хочете скинути всі дані? Цю дію неможливо скасувати.')) {
+                participants = [];
+                currentUser = null;
+                localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem(USER_KEY);
+                
+                document.getElementById('resultContainer').classList.remove('show');
+                document.getElementById('alreadyRegistered').style.display = 'none';
+                document.getElementById('slotsFull').style.display = 'none';
+                document.getElementById('registrationForm').style.display = 'block';
+                
+                renderParticipants();
+                checkRegistrationState();
+            }
+        }
+
+        // Handle Enter key
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                registerParticipant();
+            }
+        });
+
+        // Initialize
+        createSnowflakes();
+        checkRegistrationState();
+        renderParticipants();
+    </script>
+</body>
+</html>
